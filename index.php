@@ -17,9 +17,24 @@
     <input type="text" name="apellido" id="apelido"><br><br>
     <label for="telefono">Telefono:</label>
     <input type="text" name="telefono" id="telefono"><br><br>
-    <input type="submit" value="Ingresar">
+    <input type="submit" value="Ingresar" name="btningresar">
     </form>
     </center>
-    
+    <?php 
+    if (isset($_POST['btningresar'])) {
+        $_id = $_POST['id'];
+        $_nombre = $_POST['nombre'];
+        $_apellido = $_POST['apellido'];
+        $_telefono = $_POST['telefono'];
+
+        include("./clases/conexion-open.php");
+        $conexion->query("INSERT INTO $table(id,nombre,apellido,telefono) VALUES('$_id','$_nombre','$_apellido','$_telefono')");
+        include("./clases/conexion-close.php");
+        echo "se registro correctamente";
+
+
+
+    }
+    ?>
 </body>
 </html>
